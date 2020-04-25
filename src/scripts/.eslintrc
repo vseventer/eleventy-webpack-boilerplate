@@ -1,0 +1,16 @@
+{
+  "env": {
+    "browser": true,
+    "node": false
+  },
+  "globals": {
+    "__webpack_public_path__": "readonly",
+    "process": "readonly"
+  },
+  "rules": {
+    "camelcase": ["error", {
+      "allow": ["__webpack_public_path__"]
+    }],
+    "no-console": "error"
+  }
+}
