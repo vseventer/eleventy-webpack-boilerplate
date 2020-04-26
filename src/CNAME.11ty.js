@@ -13,7 +13,7 @@ import {
 // Constants.
 const OUTPUT_DIRECTORY = config.output;
 const CNAME_FILE = joinPath(OUTPUT_DIRECTORY, 'CNAME');
-const PRODUCTION = process.env.TARGET_ENV === 'production';
+const PRODUCTION = process.env.NODE_ENV === 'production';
 
 // Exports.
 module.exports = class CNameRecord {
