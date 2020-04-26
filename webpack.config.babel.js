@@ -59,7 +59,11 @@ module.exports = {
         use: [
           {
             loader: 'file-loader',
-            options: { name: generateName('styles/[name].[contenthash:8].css') }
+            options: {
+              name: generateName(
+                PRODUCTION ? 'styles/[name].[contenthash:8].css' : 'styles/[name].css'
+              )
+            }
           },
           'extract-loader',
           {
@@ -78,7 +82,11 @@ module.exports = {
         use: [
           {
             loader: 'spawn-loader',
-            options: { name: generateName('scripts/[name].[contenthash:8].js') }
+            options: {
+              name: generateName(
+                PRODUCTION ? 'scripts/[name].[contenthash:8].js' : 'scripts/[name].js'
+              )
+            }
           },
           'babel-loader',
           'eslint-loader'
@@ -88,14 +96,22 @@ module.exports = {
         test: /\.(gif|jpe?g|svg|png|webm)$/i,
         use: {
           loader: 'file-loader',
-          options: { name: generateName('images/[name].[contenthash:8].[ext]') }
+          options: {
+            name: generateName(
+              PRODUCTION ? 'images/[name].[contenthash:8].[ext]' : 'images/[name].[ext]'
+            )
+          }
         }
       },
       {
         test: /\.(eot|otf|ttf|woff2?)$/i,
         use: {
           loader: 'file-loader',
-          options: { name: generateName('fonts/[name].[contenthash:8].[ext]') }
+          options: {
+            name: generateName(
+              PRODUCTION ? 'fonts/[name].[contenthash:8].[ext]' : 'fonts/[name].[ext]'
+            )
+          }
         }
       },
       {
