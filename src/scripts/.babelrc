@@ -1,9 +1,11 @@
 {
   "extends": "../../.babelrc",
-  "plugins": [
-    ["@babel/plugin-transform-runtime", { corejs: 3 }]
-  ],
   "presets": [
-    ["@babel/preset-env", { loose: true, modules: false }]
+    ["@babel/preset-env", {
+      "corejs": 3,
+      "loose": true,
+      "modules": false,
+      "useBuiltIns": "usage"
+    }]
   ]
 }
