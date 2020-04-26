@@ -36,8 +36,11 @@ module.exports = {
       // content: [joinPath(INTERMEDIATE_DIRECTORY, '**/*.html')],
       // Purge using templates (fast, but lots of false negatives).
       content: [joinPath(INPUT_DIRECTORY, `**/*.{${ELEVENTY_TEMPLATE_LANGUAGES}}`)],
+      // Allow colons in selectors.
+      defaultExtractor: (content) => content.match(/[\w-:]+/g) || [],
       fontFace: true,
-      keyframes: true
+      keyframes: true,
+      variables: true
     }),
     autoprefixer(),
     PRODUCTION && cssnano(),
