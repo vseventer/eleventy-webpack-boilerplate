@@ -4,6 +4,10 @@
     "@babel/plugin-proposal-private-methods"
   ],
   "presets": [
-    ["@babel/preset-env", { "targets": "node >=10" }]
+    ["@babel/preset-env", {
+      "targets": {
+        "node": "current"
+      }
+    }]
   ]
 }
