@@ -1,6 +1,5 @@
 // Standard lib.
 import { resolve as resolvePath } from 'path';
-import { parse as parseQueryString } from 'querystring';
 
 // Package modules.
 import globby from 'globby';
@@ -15,14 +14,6 @@ const INTERMEDIATE_DIRECTORY = resolvePath(__dirname, config.intermediate);
 const OUTPUT_DIRECTORY = resolvePath(__dirname, config.output);
 const PRODUCTION = process.env.NODE_ENV === 'production';
 const STAGING = process.env.NODE_ENV === 'staging';
-
-// Helpers.
-const generateName = (defaultName) => (
-  (_, query = '?') => {
-    const { name } = parseQueryString(query.substr(1));
-    return name || defaultName;
-  }
-);
 
 // Exports.
 module.exports = {
@@ -48,7 +39,7 @@ module.exports = {
         use: [
           {
             loader: 'file-loader',
-            options: { name: generateName('[path][name].[ext]') }
+            options: { name: '[path][name].[ext]' }
           },
           'extract-loader',
           'html-loader'
@@ -60,9 +51,7 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: generateName(
-                PRODUCTION ? 'styles/[name].[contenthash:8].css' : 'styles/[name].css'
-              )
+              name: PRODUCTION ? 'styles/[name].[contenthash:8].css' : 'styles/[name].css'
             }
           },
           'extract-loader',
@@ -83,9 +72,7 @@ module.exports = {
           {
             loader: 'spawn-loader',
             options: {
-              name: generateName(
-                PRODUCTION ? 'scripts/[name].[contenthash:8].js' : 'scripts/[name].js'
-              )
+              name: PRODUCTION ? 'scripts/[name].[contenthash:8].js' : 'scripts/[name].js'
             }
           },
           'babel-loader',
@@ -97,9 +84,7 @@ module.exports = {
         use: {
           loader: 'file-loader',
           options: {
-            name: generateName(
-              PRODUCTION ? 'images/[name].[contenthash:8].[ext]' : 'images/[name].[ext]'
-            )
+            name: PRODUCTION ? 'images/[name].[contenthash:8].[ext]' : 'images/[name].[ext]'
           }
         }
       },
@@ -108,9 +93,7 @@ module.exports = {
         use: {
           loader: 'file-loader',
           options: {
-            name: generateName(
-              PRODUCTION ? 'fonts/[name].[contenthash:8].[ext]' : 'fonts/[name].[ext]'
-            )
+            name: PRODUCTION ? 'fonts/[name].[contenthash:8].[ext]' : 'fonts/[name].[ext]'
           }
         }
       },
@@ -118,7 +101,7 @@ module.exports = {
         test: /\.txt$/i,
         use: {
           loader: 'file-loader',
-          options: { name: generateName('[path][name].[ext]') }
+          options: { name: '[path][name].[ext]' }
         }
       }
     ]
