@@ -13,38 +13,37 @@
   },
   "scripts": {
     "lint": "cross-env eslint '*.js' lib/ $npm_package_config_input --ignore-pattern $npm_package_config_input'scripts/'",
-
     "11ty": "cross-env NODE_OPTIONS=\"--require @babel/register\" eleventy --config=./eleventy.config.js --input=$npm_package_config_input --output=$npm_package_config_intermediate",
     "webpack": "webpack --mode production --output-public-path $npm_package_homepage -p",
     "postwebpack": "cross-env rimraf $npm_package_config_output'scripts/bundle.js'",
-
     "clean": "cross-env rimraf $npm_package_config_intermediate $npm_package_config_output",
-
     "watch:11ty": "run-s '11ty -- --watch'",
     "prewatch:webpack": "cross-env wait-on $npm_package_config_intermediate",
     "watch:webpack": "webpack-dev-server -d",
     "prewatch": "run-s clean lint",
     "watch": "run-p watch:*",
-
     "prebuild": "run-s lint",
     "build": "NODE_ENV=production run-s 11ty webpack",
-
     "worktree:add": "cross-env git worktree add -B gh-pages $npm_package_config_output origin/gh-pages",
     "worktree:clean": "cd $npm_package_config_output && git rm -r .",
     "worktree:prune": "cross-env git worktree remove $npm_package_config_output",
     "worktree:push": "cd $npm_package_config_output && git add -A . && git commit --allow-empty && git push -u origin",
-
     "predeploy": "run-s clean worktree:add worktree:clean",
     "deploy": "run-s build worktree:push",
     "postdeploy": "run-s worktree:prune",
-
     "start": "run-s watch"
   },
   "dependencies": {
     "@fullhuman/postcss-purgecss": "^2",
     "autoprefixer": "^9.7",
     "cssnano": "^4.1",
+    "imagemin-mozjpeg": "^8",
+    "imagemin-webpack-plugin": "^2.4",
+    "loader-utils": "^2",
+    "markdown-it": "^10",
+    "nunjucks": "^3.2",
     "postcss-reporter": "^6",
+    "responsive-loader": "^1.2",
     "stylelint": "^13.2"
   },
   "devDependencies": {
@@ -70,6 +69,7 @@
     "npm-run-all": "^4.1",
     "postcss-loader": "^3",
     "rimraf": "^3",
+    "sharp": "^0.25",
     "spawn-loader": "^6",
     "stylelint-config-recommended": "^3",
     "stylelint-no-unsupported-browser-features": "^4",
