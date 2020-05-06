@@ -1,27 +1,43 @@
 {%- import "utils.njk" as utils -%}
 
 <!doctype html>
-<html lang="en">
+<html lang="{{- settings.language -}}">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{- title -}}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>{{- title }} • {{ settings.title -}}</title>
 
     <meta name="HandheldFriendly" content="true" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     {% if page.excerpt %}
       <meta name="description" content="{{- utils.eval(page.excerpt) | markdown | striptags -}}" />
     {% endif %}
 
-    <link href="~styles/main.css" rel="stylesheet" />
+    {% block styles %}
+      <link href="~styles/main.css" rel="stylesheet" />
+
+      {# Any additional styles can be inserted here. #}
+    {% endblock %}
 
     {% if not eleventyExcludeFromCollections %}
       <link href="{{- page.url | url -}}" rel="canonical" />
     {% endif %}
+
+    {% block head %}
+      {# Any custom heading code can be inserted here. #}
+    {% endblock %}
   </head>
   <body>
-    {{ content | safe }}
+    {% block content %}
+      {{ content | safe }}
+    {% endblock %}
 
-    <script src="~scripts/main.js" async></script>
+    {% block scripts %}
+      {# Any additional scripts can be inserted here. #}
+
+      <script src="~scripts/main.js" async></script>
+    {% endblock %}
   </body>
 </html>
