@@ -52,7 +52,6 @@
     "imagemin-webpack-plugin": "^2.4",
     "loader-utils": "^2",
     "markdown-it": "^10",
-    "nunjucks": "^3.2",
     "postcss-preset-env": "^6.7",
     "postcss-reporter": "^6",
     "responsive-loader": "^1.2",
