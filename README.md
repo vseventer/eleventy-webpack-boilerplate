@@ -1,6 +1,8 @@
 # eleventy-parcel-boilerplate
 > Starter kit for using [Eleventy] with [Webpack], backed by [Forestry].
 
+&#x26a0; Until [there PRs](https://github.com/peerigon/extract-loader/pulls?q=is%3Apr+author%3Avseventer) are merged, you are required to set-up extract-loader yourself :(
+
 [Eleventy] is <cite>_a simpler static site generator_</cite>, which does a beautiful job of scaffolding your static site. However, a web application is so much more; what about images, stylesheets, or scripts? This is where [Webpack], a <cite>_static module bundler_</cite>, comes in. By combining [Eleventy] with [Webpack], you can take your static site to the next level with minimal effort.
 
 As a bonus, this project is preconfigured to work out of the box with [Forestry], in case you use [Forestry] to edit your site content.
@@ -53,7 +55,7 @@ This project follows the recommended configuration for [stylelint]. Linting is r
 The [Eleventy] configuration file sets some sane defaults, as well as provide a boilerplate for how to add custom filters and tags. This project comes with one sample `link` custom Nunjucks tag.
 
 ### `postcss.config.js`
-The [PostCSS] configuration adds a number of plugins. Your stylesheets are linted with [stylelint], before being optimized with [PurgeCSS] (production only), and [autoprefixer].
+The [PostCSS] configuration adds a number of plugins. Your stylesheets are linted with [stylelint], processed with [postcss-preset-env] (which includes [autoprefixer]) before being optimized with [PurgeCSS] (production only).
 
 ### `webpack.config.babel.js`
 The [Webpack] configuration defines how your assets are bundled together.
@@ -98,6 +100,7 @@ If you are using [Forestry] to manage your content, import your site by followin
 [forestry]: https://forestry.io/
 [parcel]: https://parceljs.org/
 [postcss]: https://postcss.org/
+[postcss-preset-env]: https://github.com/csstools/postcss-preset-env
 [purgecss]: https://www.purgecss.com/
 [stylelint]: https://stylelint.io/
 [webpack]: https://webpack.js.org/

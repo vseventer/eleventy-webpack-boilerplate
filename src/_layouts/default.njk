@@ -8,7 +8,6 @@
     <title>{{- title -}}</title>
 
     <meta name="HandheldFriendly" content="true" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     {% if page.excerpt %}
       <meta name="description" content="{{- utils.eval(page.excerpt) | markdown | striptags -}}" />

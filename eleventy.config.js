@@ -53,7 +53,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addNunjucksTag('link', NunjucksLinkExtension.singleton);
 
   // Copy static assets.
-  eleventyConfig.addPassthroughCopy(joinPath(INPUT_DIRECTORY, '*.txt'));
+  eleventyConfig.addPassthroughCopy(joinPath(INPUT_DIRECTORY, '**/*.txt'));
 
   // Return configuration options.
   // @see https://www.11ty.io/docs/config/

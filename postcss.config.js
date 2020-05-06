@@ -4,8 +4,8 @@
 import { join as joinPath } from 'path';
 
 // Package modules.
-import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
+import presetEnv from 'postcss-preset-env';
 import purgecss from '@fullhuman/postcss-purgecss';
 import reporter from 'postcss-reporter';
 import stylelint from 'stylelint';
@@ -31,6 +31,7 @@ const isTruthy = (x) => !!x;
 module.exports = {
   plugins: [
     stylelint(),
+    presetEnv({ preserve: !PRODUCTION }),
     PRODUCTION && purgecss({
       // Purge using full output (more precise, but slow).
       // content: [joinPath(INTERMEDIATE_DIRECTORY, '**/*.html')],
@@ -42,7 +43,6 @@ module.exports = {
       keyframes: true,
       variables: true
     }),
-    autoprefixer(),
     PRODUCTION && cssnano(),
     reporter({ clearReportedMessages: true })
   ].filter(isTruthy)

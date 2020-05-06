@@ -48,7 +48,7 @@ module.exports = {
   output: {
     path: OUTPUT_DIRECTORY,
     publicPath: '/',
-    filename: 'scripts/bundle.js'
+    filename: 'scripts/runtime.js'
   },
   module: {
     rules: [
