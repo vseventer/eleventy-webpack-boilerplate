@@ -1,7 +1,7 @@
 {
   "name": "eleventy-webpack-boilerplate",
   "version": "0.1.0",
-  "description": "Starter kit for using Eleventy with Webpack, backed by Forestry.",
+  "description": "Starter kit for using Eleventy with webpack, backed by Forestry.",
   "keywords": [
     "Eleventy",
     "Forestry",
