@@ -52,8 +52,10 @@
     "imagemin-webpack-plugin": "^2.4",
     "loader-utils": "^2",
     "markdown-it": "^10",
+    "postcss-import": "^12",
     "postcss-preset-env": "^6.7",
     "postcss-reporter": "^6",
+    "postcss-url": "^8",
     "responsive-loader": "^1.2",
     "stylelint": "^13.2"
   },
@@ -87,7 +89,7 @@
     "wait-on": "^5",
     "webpack": "^4.43",
     "webpack-cli": "^3.3",
-    "webpack-dev-server": "^3.10"
+    "webpack-dev-server": "^3.11"
   },
   "engines": {
     "node": "^10",

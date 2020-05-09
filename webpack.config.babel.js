@@ -27,8 +27,8 @@ const STAGING = process.env.NODE_ENV === 'staging';
 
 // Helpers.
 const generateName = (defaultName) => (
-  (_, query) => {
-    const { name } = parseQuery(query || '?');
+  (resourcePath, resourceQuery) => {
+    const { name } = parseQuery(resourceQuery || '?');
     return name || defaultName;
   }
 );
@@ -80,7 +80,7 @@ module.exports = {
           'extract-loader',
           {
             loader: 'css-loader',
-            options: { esModule: true, sourceMap: !PRODUCTION }
+            options: { esModule: true, import: false, sourceMap: !PRODUCTION }
           },
           {
             loader: 'postcss-loader',
