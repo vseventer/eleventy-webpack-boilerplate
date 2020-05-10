@@ -21,7 +21,6 @@
 
     "11ty": "cross-env NODE_OPTIONS=\"--require @babel/register\" eleventy --config=./eleventy.config.js --input=$npm_package_config_input --output=$npm_package_config_intermediate",
     "webpack": "webpack --mode production --output-public-path $npm_package_homepage -p",
-    "postwebpack": "cross-env rimraf $npm_package_config_output'scripts/runtime.js'",
 
     "clean": "cross-env rimraf $npm_package_config_intermediate $npm_package_config_output",
 
@@ -33,6 +32,7 @@
 
     "prebuild": "run-s lint",
     "build": "NODE_ENV=production run-s 11ty webpack",
+    "postbuild": "cross-env rimraf $npm_package_config_output'scripts/runtime.js'",
 
     "worktree:add": "cross-env git worktree add -B gh-pages $npm_package_config_output origin/gh-pages",
     "worktree:clean": "cd $npm_package_config_output && git rm -r .",
@@ -73,6 +73,7 @@
     "css-loader": "^3.5",
     "eslint": "^6.8",
     "eslint-config-airbnb-base": "^14",
+    "eslint-import-resolver-webpack": "^0.12",
     "eslint-loader": "^4",
     "eslint-plugin-import": "^2.20",
     "extract-loader": "file:../extract-loader",

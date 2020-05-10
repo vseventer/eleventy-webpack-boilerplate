@@ -12,5 +12,8 @@
       "allow": ["__webpack_public_path__"]
     }],
     "no-console": "error"
+  },
+  "settings": {
+    "import/resolver": "eslint-import-resolver-webpack"
   }
 }
