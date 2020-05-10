@@ -110,7 +110,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(heic|jpe?g|png|tiff|wepm)$/i,
+        test: /\.(heic|jpe?g|png|tiff|webp)$/i,
         use: {
           loader: 'responsive-loader',
           options: {
