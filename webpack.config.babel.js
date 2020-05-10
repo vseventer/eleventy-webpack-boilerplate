@@ -143,6 +143,10 @@ module.exports = {
       }
     ]
   },
+  optimization: {
+    // spawn-loader is not compatible with module concatenation.
+    concatenateModules: false
+  },
   plugins: [
     new EnvironmentPlugin({ WEBPACK_DEV_SERVER: false }),
     new ImageminPlugin({
@@ -162,11 +166,5 @@ module.exports = {
   },
   devServer: {
     ...STAGING && { host: '0.0.0.0' }
-  },
-  stats: {
-    children: false,
-    entrypoints: false,
-    hash: false,
-    modules: false
   }
 };

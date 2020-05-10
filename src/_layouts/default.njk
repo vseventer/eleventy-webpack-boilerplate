@@ -39,5 +39,10 @@
 
       <script src="~scripts/main.js" async></script>
     {% endblock %}
+
+    {% if project.env.NODE_ENV !== "production" %}
+      {# Embed runtime in live mode. #}
+      <script src="/scripts/runtime.js" async></script>
+    {% endif %}
   </body>
 </html>
