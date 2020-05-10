@@ -76,7 +76,7 @@
     "eslint-import-resolver-webpack": "^0.12",
     "eslint-loader": "^4",
     "eslint-plugin-import": "^2.20",
-    "extract-loader": "file:../extract-loader",
+    "extract-loader": "github:vseventer/extract-loader#alias-placeholder-feature-branch",
     "file-loader": "^6",
     "globby": "^11",
     "html-loader": "^1.1",

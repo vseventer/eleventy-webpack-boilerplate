@@ -1,8 +1,6 @@
 # eleventy-parcel-boilerplate
 > Starter kit for using [Eleventy] with [webpack], backed by [Forestry].
 
-> &#x26a0; Until [these PRs](https://github.com/peerigon/extract-loader/pulls?q=is%3Apr+author%3Avseventer) are merged, you are required to set-up extract-loader yourself :( &#x26a0;
-
 [Eleventy] is <cite>_a simpler static site generator_</cite>, which does a beautiful job of scaffolding your static site. However, a web application is so much more; what about images, stylesheets, or scripts? This is where [webpack], a <cite>_static module bundler_</cite>, comes in. By combining [Eleventy] with [webpack], you can take your static site to the next level with minimal effort.
 
 As a bonus, this project is preconfigured to work out of the box with [Forestry], in case you use [Forestry] to edit your site content.
