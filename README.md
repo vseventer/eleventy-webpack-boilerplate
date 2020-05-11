@@ -1,4 +1,4 @@
-# eleventy-parcel-boilerplate
+# eleventy-webpack-boilerplate
 > Starter kit for using [Eleventy] with [webpack], backed by [Forestry].
 
 [Eleventy] is <cite>_a simpler static site generator_</cite>, which does a beautiful job of scaffolding your static site. However, a web application is so much more; what about images, stylesheets, or scripts? This is where [webpack], a <cite>_static module bundler_</cite>, comes in. By combining [Eleventy] with [webpack], you can take your static site to the next level with minimal effort.
