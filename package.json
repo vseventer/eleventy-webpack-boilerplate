@@ -93,8 +93,7 @@
     "webpack-dev-server": "^3.11"
   },
   "engines": {
-    "node": "^10",
-    "yarn": "^1"
+    "node": ">=10"
   },
   "private": true
 }
