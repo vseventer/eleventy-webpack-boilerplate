@@ -85,6 +85,7 @@ module.exports = {
       },
       {
         test: /\.js$/i,
+        exclude: NODE_MODULES_DIRECTORY,
         issuer: /\.html$/i,
         use: {
           loader: 'spawn-loader',
