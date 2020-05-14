@@ -1,10 +1,5 @@
 // Standard lib.
-import {
-  dirname,
-  relative as relativePath,
-  resolve as resolvePath
-} from 'path';
-import { parse as parseUrl } from 'url';
+import { resolve as resolvePath } from 'path';
 
 // Package modules.
 import globby from 'globby';
@@ -90,21 +85,20 @@ module.exports = {
       },
       {
         test: /\.js$/i,
+        issuer: /\.html$/i,
+        use: {
+          loader: 'spawn-loader',
+          options: {
+            name: generateName(
+              PRODUCTION ? '[path][name].[contenthash:8].[ext]' : '[path][name].[ext]'
+            )
+          }
+        }
+      },
+      {
+        test: /\.js$/i,
         exclude: NODE_MODULES_DIRECTORY,
         use: [
-          {
-            loader: 'spawn-loader',
-            options: {
-              // @see https://webpack.js.org/configuration/output/#outputfilename
-              name: (chunkData) => {
-                const { resource } = chunkData.chunk.entryModule;
-                const path = dirname(relativePath(INPUT_DIRECTORY, resource));
-                return generateName(
-                  PRODUCTION ? `${path}/[name].[contenthash:8].js` : `${path}/[name].js`
-                )(resource, parseUrl(resource).search);
-              }
-            }
-          },
           'babel-loader',
           'eslint-loader'
         ]
@@ -142,10 +136,6 @@ module.exports = {
         }
       }
     ]
-  },
-  optimization: {
-    // spawn-loader is not compatible with module concatenation.
-    concatenateModules: false
   },
   plugins: [
     new EnvironmentPlugin({ WEBPACK_DEV_SERVER: false }),
