@@ -7,7 +7,10 @@ import imageminMozjpeg from 'imagemin-mozjpeg';
 import ImageminPlugin from 'imagemin-webpack-plugin';
 import { parseQuery } from 'loader-utils';
 import sharp from 'responsive-loader/sharp';
-import { EnvironmentPlugin } from 'webpack';
+import {
+  EnvironmentPlugin,
+  web
+} from 'webpack';
 
 // Local modules.
 import { config } from './package.json';
@@ -91,8 +94,11 @@ module.exports = {
           loader: 'spawn-loader',
           options: {
             name: generateName(
-              PRODUCTION ? '[path][name].[contenthash:8].[ext]' : '[path][name].[ext]'
-            )
+              PRODUCTION ? '[path][name].[chunkhash:8].[ext]' : '[path][name].[ext]'
+            ),
+            plugins: [
+              new web.JsonpTemplatePlugin() // Enable dynamic imports.
+            ]
           }
         }
       },
